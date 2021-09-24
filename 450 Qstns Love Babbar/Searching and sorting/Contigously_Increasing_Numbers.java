@@ -13,6 +13,12 @@ Output
 
 
 
+Intuition:- 
+Step 1:- Since digits are increasing contigously. So we will take next =digit+1
+Step 2:- Since start can be any number its not always 0. It can be any number.So we will iterate till that start number.
+Step 3:- Once we reach start we keep adding element to array and then keep increasing next and keep making digit with formula digit=digit*10+ num
+Step 4:- Since values added to array will be random so we will sort the array after adding all elements till end number.
+
 Ans:-
 import java.util.*;
 
