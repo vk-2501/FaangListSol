@@ -1,0 +1,63 @@
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        //Base Cases
+        if(nums.length==1){
+            return nums[0];
+        }
+        else if(nums[0]!=nums[1]){
+            return nums[0];
+            
+        }
+        else if(nums[nums.length-1]!=nums[nums.length-2]){
+            return nums[nums.length-1];
+        }
+        
+        
+        int l=0,r=nums.length-1;
+        while(l<=r){
+            int mid=(l+r)/2;
+            //If element is equal to its previous and next then it will be the element
+            if(nums[mid]!=nums[mid-1] && nums[mid]!=nums[mid+1]){
+                return nums[mid];
+            }
+            
+            //Else if it is equal to its previous
+            //1. Calculate the no of elements in left
+            //2. If count is even that means single element is not present here
+            //3. If count is not even then element is presesnt here
+            else if(nums[mid]==nums[mid-1]){
+                int lc=mid-l+1;
+                if(lc%2==0){
+                   l=mid+1; 
+                }
+                else{
+                   r=mid-2; //As we have aleady checked the value so just skip that
+                }
+            }
+            
+            //Else if it is equal to its next element
+            //1. Calculate the no of elements in right
+            //2. If count is even that means single element is not present here
+            //3. If count is not even then element is presesnt here
+            
+            else if(nums[mid]==nums[mid+1]){
+               int rc=r-mid+1;
+                if(rc%2==0){
+                    r=mid-1;
+                }
+                else{
+                    l=mid+2;//As we have already checked that mid =mid+1 so skip this and                                 move 2 places ahead
+                }
+            }
+                    
+        }
+        return -1;
+    }
+    
+}
+                    
+                    
+                    
+        
+                    
+               
